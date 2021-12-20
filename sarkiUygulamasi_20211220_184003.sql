@@ -68,6 +68,24 @@ $$;
 ALTER FUNCTION public.kullaniciguncelle(kullaniciid integer, kullaniciadi character varying, kullanicisoyadi character varying, emailinput character varying, dogumyili integer) OWNER TO postgres;
 
 --
+-- Name: kullanicisilme(integer); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION public.kullanicisilme(kullanici_id_input integer) RETURNS void
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+
+DELETE from public."Kullanici" where kullanici_id=kullanici_id_input;
+
+end
+$$;
+
+
+ALTER FUNCTION public.kullanicisilme(kullanici_id_input integer) OWNER TO postgres;
+
+
+--
 -- Name: kullanicisayisiartma(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -100,23 +118,6 @@ $$;
 
 
 ALTER FUNCTION public.kullanicisayisiazalma() OWNER TO postgres;
-
---
--- Name: kullanicisilme(integer); Type: FUNCTION; Schema: public; Owner: postgres
---
-
-CREATE FUNCTION public.kullanicisilme(kullanici_id_input integer) RETURNS void
-    LANGUAGE plpgsql
-    AS $$
-BEGIN
-
-DELETE from public."Kullanici" where kullanici_id=kullanici_id_input;
-
-end
-$$;
-
-
-ALTER FUNCTION public.kullanicisilme(kullanici_id_input integer) OWNER TO postgres;
 
 --
 -- Name: sanatcisayisiartma(); Type: FUNCTION; Schema: public; Owner: postgres
